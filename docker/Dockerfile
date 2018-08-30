@@ -1,4 +1,4 @@
-# Use the official Docker Hub Ubuntu 14.04 base image
+# Use the official Docker Hub Ubuntu 16.04 base image
 FROM ubuntu:16.04
 
 # Update the base image

@@ -4,6 +4,7 @@ services:
     build:
       context: ../
       dockerfile: ./docker/Dockerfile
+    name: timesketch
     ports:
       - "80:80"
     links:
@@ -26,12 +27,10 @@ services:
     restart: always
 
   elasticsearch:
-    # uncomment the following lines to control JVM memory utilization
-    # in smaller deployments with minimal resources
-
     environment:
       - ES_JAVA_OPTS= -Xms1g -Xmx1g # 1G min/1G max
     image: elasticsearch
+    name: elasticsearch
     ports:
       - "9200:9200"
       - "9300:9300"
@@ -42,6 +41,7 @@ services:
 
   postgres:
     image: postgres
+    name: postgres
     ports:
       - "5432:5432"
     environment:
@@ -54,11 +54,13 @@ services:
 
   redis:
     image: redis
+    name: redis
     volumes:
       - /var/lib/redis:/data
 
   neo4j:
     image: neo4j
+    name: neo4j
     environment:
       - NEO4J_AUTH=none
     restart: always
