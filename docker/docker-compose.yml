@@ -1,10 +1,10 @@
-version: '3'
+version: '3.1'
 services:
   timesketch:
     build:
       context: ../
       dockerfile: ./docker/Dockerfile
-    name: timesketch
+    container_name: timesketch
     ports:
       - "80:80"
     links:
@@ -30,7 +30,7 @@ services:
     environment:
       - ES_JAVA_OPTS= -Xms1g -Xmx1g # 1G min/1G max
     image: elasticsearch
-    name: elasticsearch
+    container_name: elasticsearch
     ports:
       - "9200:9200"
       - "9300:9300"
@@ -41,7 +41,7 @@ services:
 
   postgres:
     image: postgres
-    name: postgres
+    container_name: postgres
     ports:
       - "5432:5432"
     environment:
@@ -54,13 +54,13 @@ services:
 
   redis:
     image: redis
-    name: redis
+    container_name: redis
     volumes:
       - /var/lib/redis:/data
 
   neo4j:
     image: neo4j
-    name: neo4j
+    container_name: neo4j
     environment:
       - NEO4J_AUTH=none
     restart: always
