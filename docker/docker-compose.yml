@@ -37,7 +37,7 @@ services:
     restart: always
     volumes:
       - ../contrib/:/usr/share/elasticsearch/config/scripts/
-      - /var/lib/elasticsearch:/usr/share/elasticsearch/data/elasticsearch
+      - ./lib/elasticsearch:/usr/share/elasticsearch/data/elasticsearch
 
   postgres:
     image: postgres
@@ -49,14 +49,13 @@ services:
       - POSTGRES_PASSWORD=password
     restart: always
     volumes:
-      - /var/lib/postgresql/data:/var/lib/postgresql/data
-
+      - ./lib/postgresql/data:/var/lib/postgresql/data
 
   redis:
     image: redis
     container_name: redis
     volumes:
-      - /var/lib/redis:/data
+      - ./lib/redis:/data
 
   neo4j:
     image: neo4j
@@ -65,4 +64,4 @@ services:
       - NEO4J_AUTH=none
     restart: always
     volumes:
-      - /var/lib/neo4j/data:/var/lib/neo4j/data
+      - ./lib/neo4j/data:/var/lib/neo4j/data
